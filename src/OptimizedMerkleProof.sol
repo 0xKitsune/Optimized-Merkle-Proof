@@ -27,7 +27,7 @@ contract OptimizedMerkleProof {
                 //calculate the next proof
                 {
                     switch lt(leaf, proofElement)
-                    //if the leaf is < proofElement
+                    //if the leaf is > proofElement
                     case 0 {
                         //store the proof then hash element in scratch space
                         mstore(0x00, proofElement)
@@ -36,7 +36,7 @@ contract OptimizedMerkleProof {
                         //hash the proofElement and leaf to get the new proof
                         leaf := keccak256(0x00, 0x40)    
                     }
-                    //else
+                    //if the leaf is < proofElement
                     default {
                         //store the hash then proof element in scratch space
                         mstore(0x00, leaf)
