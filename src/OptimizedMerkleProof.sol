@@ -76,6 +76,11 @@ contract OptimizedMerkleProof {
 }
 
 
+
+// NOTE: Offsets in calldata do not account for function sig, will update this later.
+//Disregard anything below this comment for now
+
+
 //TODO: Benchmark maybe adding everything in assembly, prob not but will check if any significant gas savings
 // This still needs to be further optimized also
 
