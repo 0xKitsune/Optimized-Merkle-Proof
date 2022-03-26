@@ -21,7 +21,7 @@ contract OptimizedMerkleProof {
             } {
 
                 //The offset is 0x84, which is 132 bytes there is an extra 4 bytes to account for the method signature in the calldata
-                //Offset for the first proof element is 0xA4 because the length of the array is at 0x64
+                //Offset for the first proof element is 0x84 because the length of the array is at 0x64
                 let proofElement := calldataload(add(0x84,mul(0x20,i)))
 
                 //calculate the next proof
