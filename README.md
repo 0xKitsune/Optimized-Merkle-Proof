@@ -3,6 +3,7 @@
 
 This contract is not finished yet. I am still adding further optimizations and comments. Below is a current snapshot of gas savings compared to [The Smart Contract Programmer's MerkleProof contract](https://solidity-by-example.org/merkle-tree/).
 
+```
 ╭──────────────────────┬─────────────────┬──────┬────────┬──────┬─────────╮
 │ MerkleProof contract ┆                 ┆      ┆        ┆      ┆         │
 ╞══════════════════════╪═════════════════╪══════╪════════╪══════╪═════════╡
@@ -25,3 +26,4 @@ This contract is not finished yet. I am still adding further optimizations and c
 ├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
 │ verify                        ┆ 893             ┆ 893 ┆ 893    ┆ 893 ┆ 1       │
 ╰───────────────────────────────┴─────────────────┴─────┴────────┴─────┴─────────╯
+```
