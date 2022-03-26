@@ -1,7 +1,7 @@
 # Optimized-Merkle-Proof
 
 
-This contract is not finished yet. I am still adding further optimizations and comments. Below is a current snapshot of gas savings using [The Smart Contract Programmer's MerkleProof contract](https://solidity-by-example.org/merkle-tree/) as a baseline.
+This contract is not finished yet. I am still adding further optimizations and comments. Below is a current snapshot of gas savings using [Openzeppelin's MerkleProof Implementation](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/cryptography/MerkleProof.sol) as a baseline.
 
 ```
 ╭──────────────────────┬─────────────────┬──────┬────────┬──────┬─────────╮
@@ -9,11 +9,11 @@ This contract is not finished yet. I am still adding further optimizations and c
 ╞══════════════════════╪═════════════════╪══════╪════════╪══════╪═════════╡
 │ Deployment Cost      ┆ Deployment Size ┆      ┆        ┆      ┆         │
 ├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
-│ 140183               ┆ 732             ┆      ┆        ┆      ┆         │
+│ 114159               ┆ 602             ┆      ┆        ┆      ┆         │
 ├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
 │ Function Name        ┆ min             ┆ avg  ┆ median ┆ max  ┆ # calls │
 ├╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┼╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌╌┤
-│ verify               ┆ 1821            ┆ 1821 ┆ 1821   ┆ 1821 ┆ 2       │
+│ verify               ┆ 1437            ┆ 1437 ┆ 1437   ┆ 1437 ┆ 1       │
 ╰──────────────────────┴─────────────────┴──────┴────────┴──────┴─────────╯
 ╭───────────────────────────────┬─────────────────┬─────┬────────┬─────┬─────────╮
 │ OptimizedMerkleProof contract ┆                 ┆     ┆        ┆     ┆         │
