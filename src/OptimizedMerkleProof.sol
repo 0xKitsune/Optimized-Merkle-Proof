@@ -5,7 +5,6 @@ contract OptimizedMerkleProof {
  
     ///@param leaf - The element that gets hashed with the hash at `index`
     function verify(
-        uint256 index,
         bytes32 root,
         bytes32 leaf,
         bytes32[] calldata proof
@@ -21,46 +20,33 @@ contract OptimizedMerkleProof {
                 i := add(i, 1)
             } {
 
-                //The offset is 0xA4, which is 164 bytes there is an extra 4 bytes to account for the method signature in the calldata
-                //Offset for the first proof element is 0xA4 because the length of the array is at 0x84
-                let proofElement := calldataload(add(0xA4,mul(0x20,i)))
+                //The offset is 0x84, which is 132 bytes there is an extra 4 bytes to account for the method signature in the calldata
+                //Offset for the first proof element is 0xA4 because the length of the array is at 0x64
+                let proofElement := calldataload(add(0x84,mul(0x20,i)))
 
                 //calculate the next proof
                 {
-                    //if the current index is even
-                    switch mod(index, 2)
-                    //if index % 2 == 0
+                    switch lt(leaf, proofElement)
+                    //if the leaf is < proofElement
                     case 0 {
-                   
-                        //store the hash then proof element in scratch space
-                        mstore(0x00, leaf)
-                        mstore(0x20, proofElement)
-
-                        //keccak256 hash the leaf and proofElement to get the new proof
-                        leaf := keccak256(0x00, 0x40)
-                         
-                    }
-                    //else
-                    default {
                         //store the proof then hash element in scratch space
                         mstore(0x00, proofElement)
                         mstore(0x20, leaf)
 
                         //hash the proofElement and leaf to get the new proof
                         leaf := keccak256(0x00, 0x40)    
+                    }
+                    //else
+                    default {
+                        //store the hash then proof element in scratch space
+                        mstore(0x00, leaf)
+                        mstore(0x20, proofElement)
+
+                        //keccak256 hash the leaf and proofElement to get the new proof
+                        leaf := keccak256(0x00, 0x40)
 
                     }
-
-                     
                 }
-
-                // The parent index of the current proof is always `k` where the current proof index is equal to `2k` for even indexes or `2k + 1` for odds
-                // In a more legible formula:
-                // When the current index is even: currentIndex = 2 * parentIndex
-                // When the current index is odd: currentIndex = 2 * parentIndex + 1
-                // This finds `k` by taking the current proof index, dividing it by two and rounding down to the nearest int.
-                // Rounding down accounts for when the index is odd.
-                index := div(index, 2)
             }
 
             //Evaluates to if root != leaf after the leaf has been updated

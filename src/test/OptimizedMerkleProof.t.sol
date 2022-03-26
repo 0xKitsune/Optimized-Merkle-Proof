@@ -26,8 +26,6 @@ contract ContractTest is DSTest {
         proof[1] = proof1;
 
         bool valid = _optimizedMerkleProof.verify(
-            //index
-            2,
             //root
             0x074b43252ffb4a469154df5fb7fe4ecce30953ba8b7095fe1e006185f017ad10,
             //leaf
