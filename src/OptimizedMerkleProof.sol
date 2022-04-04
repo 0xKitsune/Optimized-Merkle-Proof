@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.8.10;
+pragma solidity >=0.8.12;
 
 ///TODO: Update all the comments, only a temp placeholder for now
 
@@ -10,7 +10,6 @@ pragma solidity >=0.8.10;
 contract OptimizedMerkleProof {
  
 
-
     ///@notice Verifies that a leaf is part of a merkle tree
     ///@param root - The merkle root of the tree
     ///@param leaf - The element that gets hashed with the hash at `index`
@@ -19,11 +18,10 @@ contract OptimizedMerkleProof {
         bytes32 root,
         bytes32 leaf,
         bytes32[] calldata proof
-    ) public pure returns (bool) {
+    ) public pure returns (bool v) {
         uint256 proofLength = proof.length;
 
         assembly {
-
             ///@notice for each proofElement in proofs
             for {
                 let i := 0
@@ -61,13 +59,16 @@ contract OptimizedMerkleProof {
 
             ///@notice Evaluates to if root != leaf after the leaf has been updated
             if iszero(eq(root, leaf)) {
-                mstore(0x00, false)
-                return(0x00, 0x20)
+                // mstore(0x00, false)
+                // return(0x00, 0x20)
+                v:=false
+
             }
 
             ///@notice Otherwise, return true
-            mstore(0x00, true)
-            return(0x00, 0x20)
+            // mstore(0x00, true)
+            // return(0x00, 0x20)
+            v:=true
         }
     }
     

@@ -10,6 +10,7 @@ import "../../lib/utils/Console.sol";
 
 contract OptimizedMerkleProofTest is DSTest {
     MerkleProof _merkleProof;
+
     OptimizedMerkleProof _optimizedMerkleProof;
 
     function setUp() public {
