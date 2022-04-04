@@ -1,9 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.10;
 
+///TODO: Update all the comments, only a temp placeholder for now
+
+/// @title OptimizedMerkleProof
+/// @author 0xKitsune (https://github.com/0xKitsune)
+/// @notice This contract verifies merkle proofs with optimal gas efficiency
+/// @notice Add more comments
 contract OptimizedMerkleProof {
  
-    ///TODO: Update all the comments, only a temp placeholder for now
 
 
     ///@notice Verifies that a leaf is part of a merkle tree
