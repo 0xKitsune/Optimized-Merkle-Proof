@@ -15,7 +15,7 @@ contract OptimizedMerkleProof {
     ///@param root - The merkle root of the tree
     ///@param leaf - The element that gets hashed with the hash at `index`
     ///@param proof - Array of bytes32 consisting of proof elements required to verify the merkle proof
-    function verify(
+    function verifyProof(
         bytes32 root,
         bytes32 leaf,
         bytes32[] calldata proof
